@@ -65,7 +65,7 @@ class Account:
         requested = (sum_deposits) * 1/3
         amount += (amount) * 0.03
         
-        if num_deposits < 1:
+        if num_deposits < 10:
             print(f"You need to deposit at least 10 times into your account.")
         elif amount <= 100:
             print(f"Loan amount requested must be more than 100.")
