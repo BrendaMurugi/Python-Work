@@ -10,7 +10,6 @@ class Account:
         self.account_number = account_number
         self.combined_statements = []
         self.loan_balance = 0
-        self.balance2 = 0
 
     def deposit(self,amount):
         self.date = datetime.now().strftime("%c")
@@ -86,7 +85,6 @@ class Account:
         elif amount == self.loan_balance:
             return f"Loan successfully settled."
         else:
-            # self.loan_balance -= amount
             overpayment = amount - self.loan_balance
             self.balance += overpayment
             return f"Loan successfully settled and current account balance is {self.balance}."
@@ -98,5 +96,4 @@ class Account:
             return f"Enter correct amount."
         else:
             self.balance -= amount
-            self.balance2 += amount
             return f"You have sent {amount} to {account} and your balance is {self.balance}."
