@@ -10,6 +10,7 @@ class Account:
         self.account_number = account_number
         self.combined_statements = []
         self.loan_balance = 0
+        self.balance2 = 0
 
     def deposit(self,amount):
         self.date = datetime.now().strftime("%c")
@@ -53,6 +54,7 @@ class Account:
 
     def full_statement(self):
         for x in self.combined_statements:
+            self.combined_statements.sort(key=lambda x: x["Date"], reverse=True)
             time = x["Date"]
             narration = x["Narration"]
             amount = x["Amount"]
@@ -74,6 +76,7 @@ class Account:
             print(f"Loan request denied. You have an outstanding loan of {self.loan_balance}")
         else:
             self.loan_balance += amount
+            # self.combination.sort(key=lambda item: item['date'], reverse=True)
             return f"Loan request accepted. Your outstanding loan balance is {self.loan_balance}"
 
     def loan_repayment(self,amount):
@@ -83,7 +86,7 @@ class Account:
         elif amount == self.loan_balance:
             return f"Loan successfully settled."
         else:
-            self.loan_balance -= amount
+            # self.loan_balance -= amount
             overpayment = amount - self.loan_balance
             self.balance += overpayment
             return f"Loan successfully settled and current account balance is {self.balance}."
@@ -95,5 +98,5 @@ class Account:
             return f"Enter correct amount."
         else:
             self.balance -= amount
-            account.balance += amount
-            return f"You have sent {amount} to {account.account_name} and your balance is {self.balance}."
+            self.balance2 += amount
+            return f"You have sent {amount} to {account} and your balance is {self.balance}."
